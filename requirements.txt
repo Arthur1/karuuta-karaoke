@@ -1,0 +1,16 @@
+astroid==2.3.3
+beautifulsoup4==4.8.2
+html5lib==1.0.1
+isort==4.3.21
+lazy-object-proxy==1.4.3
+lxml==4.5.0
+mccabe==0.6.1
+numpy==1.18.1
+pandas==1.0.1
+pylint==2.4.4
+python-dateutil==2.8.1
+pytz==2019.3
+six==1.14.0
+soupsieve==1.9.5
+webencodings==0.5.1
+wrapt==1.11.2
