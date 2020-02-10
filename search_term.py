@@ -39,10 +39,10 @@ def main():
                         wclass = node.feature.split(',')
                         for card_id, word, ruby in zip(df_karuuta['card_id'], df_karuuta['word'], df_karuuta['ruby']):
                             if word == wclass[6] and ruby == wclass[7]:
-                                if series[card_id] == 0:
-                                    series[card_id] = 1           
+                                if series[card_id+1] == 0:
+                                    # print(word, card_id)
+                                    series[card_id+1] = 1
                         node = node.next
-            #print(series)
             df_result = df_result.append(series, ignore_index=True)
         except:
             continue
