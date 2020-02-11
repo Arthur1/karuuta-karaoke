@@ -38,7 +38,7 @@ def main():
                     while node:
                         wclass = node.feature.split(',')
                         for card_id, word, ruby in zip(df_karuuta['card_id'], df_karuuta['word'], df_karuuta['ruby']):
-                            if word == wclass[6] and ruby == wclass[7]:
+                            if word in wclass[6] and ruby in wclass[7]:
                                 if series[card_id+1] == 0:
                                     # print(word, card_id)
                                     series[card_id+1] = 1
