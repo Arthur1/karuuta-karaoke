@@ -1,8 +1,4 @@
 import pandas as pd
-import urllib.request
-import re
-import csv
-import os
 import MeCab
 
 def main():
@@ -18,7 +14,7 @@ def main():
     vals.append('')
     keys.append('artist')
     vals.append('')
-    for card_id in zip(df_karuuta['card_id']):
+    for card_id in df_karuuta['card_id']:
         keys.append(card_id)
         vals.append(0)
     series_tmp = pd.Series(vals, index=keys)
@@ -33,15 +29,17 @@ def main():
         series['artist'] = artist
         try:
             with open(lyric_path, mode='r') as f_lyric:
+                order = 1
                 for line in f_lyric:
                     node = tagger.parseToNode(line)
                     while node:
                         wclass = node.feature.split(',')
                         for card_id, word, ruby in zip(df_karuuta['card_id'], df_karuuta['word'], df_karuuta['ruby']):
                             if word in wclass[6] and ruby in wclass[7]:
-                                if series[card_id+1] == 0:
+                                if series[card_id] == 0:
                                     # print(word, card_id)
-                                    series[card_id+1] = 1
+                                    series[card_id] = order
+                                    order += 1
                         node = node.next
             df_result = df_result.append(series, ignore_index=True)
         except:
